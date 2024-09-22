@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="密码学, 静静子的小屋">
+    <meta name="keywords" content="应用机器学习, 静静子的小屋">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>密码学 | 静静子的小屋</title>
+    <title>应用机器学习 | 静静子的小屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">密码学</h1>
+                    <h1 class="description center-align post-title">应用机器学习</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-06-10
+                    2022-01-18
                 </div>
                 
 
@@ -464,178 +464,43 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h2><h4 id="划范围："><a href="#划范围：" class="headerlink" title="划范围："></a>划范围：</h4><h5 id="一个密码体制主要包括哪些部分，每部分的含义是什么？"><a href="#一个密码体制主要包括哪些部分，每部分的含义是什么？" class="headerlink" title="一个密码体制主要包括哪些部分，每部分的含义是什么？"></a>一个密码体制主要包括哪些部分，每部分的含义是什么？</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220610210545217.png" alt="image-20220610210545217" style="zoom:40%;" />
+                <h1 id="1-1-introduction"><a href="#1-1-introduction" class="headerlink" title="1.1 - introduction"></a>1.1 - introduction</h1><h1 id="正则化（regularization）"><a href="#正则化（regularization）" class="headerlink" title="正则化（regularization）"></a>正则化（regularization）</h1><img src="C:/Users/86134/AppData/Roaming/Typora/typora-user-images/image-20220118002634415.png" alt="image-20220118002634415" style="zoom:67%;" />
+
+<img src="C:/Users/86134/AppData/Roaming/Typora/typora-user-images/image-20220118002648333.png" alt="image-20220118002648333" style="zoom:67%;" />
+
+
+
+<img src="C:/Users/86134/AppData/Roaming/Typora/typora-user-images/image-20220118002658465.png" alt="image-20220118002658465" style="zoom:67%;" />
+
+<img src="C:/Users/86134/AppData/Roaming/Typora/typora-user-images/image-20220118002717440.png" alt="image-20220118002717440" style="zoom:67%;" />
+
+
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/program_developer/article/details/80867468">权重衰减（weight decay）与学习率衰减（learning rate decay）</a></p>
+<h1 id="对抗"><a href="#对抗" class="headerlink" title="对抗"></a>对抗</h1><p>当输入样本发生微小变化的时，预测结果截然相反，这样的样本称为“<strong>对抗样本</strong>”。</p>
+<p>“<strong>对抗攻击</strong>”就是想办法造出更多的对抗样本，让模型出错；</p>
+<p>“<strong>对抗防御</strong>”，就是想办法让模型能正确识别更多的对抗样本。</p>
+<p>“<strong>对抗训练</strong>” 则是属于“对抗防御”的一种，它通过构造对抗样本并加入到训练集中，增强模型对对抗样本的鲁棒性，进而提高模型的泛化能力</p>
+<ul>
+<li><p><strong>Fast Gradient Method（FGM）</strong></p>
+<p>​        对抗噪声 <img src="https://www.zhihu.com/equation?tex=%CE%94x" alt="[公式]"> 的目标是增加损失 <img src="https://www.zhihu.com/equation?tex=l(f(x+%CE%94x),y)" alt="[公式]"> ，尽量让模型在样本 <img src="https://www.zhihu.com/equation?tex=x+%5CDelta+x" alt="[公式]"> 上出错。因此一个自然的想法是沿着梯度增加的方向扰动 <img src="https://www.zhihu.com/equation?tex=x" alt="[公式]"> ，扰动量为： </p>
+<p><img src="https://www.zhihu.com/equation?tex=+%5CDelta+x+=+%5Cepsilon+%C2%B7+%5Cnabla_x%7Bl(f(x),y)%7D+%5C%5C" alt="[公式]"><br>为了限制 <img src="https://www.zhihu.com/equation?tex=%5CDelta+x" alt="[公式]"> ，可以将梯度归一化: </p>
+<p><img src="https://www.zhihu.com/equation?tex=%5CDelta+x+=+%5Cepsilon+%C2%B7+%5Cfrac%7B%5Cnabla_x%7Bl(f(x),y)%7D%7D%7B%5CVert+%5Cnabla_x%7Bl(f(x),y)%7D+%5CVert%7D+%5C%5C" alt="[公式]"><br>    然后，再最小化 <img src="https://www.zhihu.com/equation?tex=l(f_%7B%5Ctheta%7D(x+%CE%94x),y)" alt="[公式]"> 来更新参数模型参数 <img src="https://www.zhihu.com/equation?tex=%5Ctheta" alt="[公式]"> 。 将 <img src="https://www.zhihu.com/equation?tex=l(f(x+%CE%94x),y)" alt="[公式]"> 在 <img src="https://www.zhihu.com/equation?tex=x" alt="[公式]"> 处进行一阶泰勒展开，并代入 <img src="https://www.zhihu.com/equation?tex=%5CDelta+x+=+%5Cepsilon+%C2%B7+%5Cnabla_x%7Bl(f(x),y)%7D" alt="[公式]"> 得:<br><img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Baligned%7D+l(f(x+%5CDelta+x),y)+&+%5Capprox+l(f(x),y)+%5Cnabla_x%7Bl(f(x),y)%7D%C2%B7%5CDelta+x+%5C%5C+&=+l(f(x),y)+%5Cepsilon+%5CVert+%5Cnabla_x%7Bl(f(x),y)%7D+%5CVert%5E2+%5Cend%7Baligned%7D+%5C%5C" alt="[公式]"> </p>
+<p>不难看出，FGM和梯度惩罚是等价的， <img src="https://www.zhihu.com/equation?tex=%5Cepsilon+%5CVert+%5Cnabla_x%7BL(x,y;%5Ctheta)%7D+%5CVert%5E2" alt="[公式]"> 就是梯度惩罚的正则项。</p>
+</li>
+<li><p><strong>Projected Gradient Descent（PGD）</strong></p>
+<p>​        PGD和FGM的思路一致的，FGM通过一次梯度上升来构造对抗样本，而PGD通过多次梯度上升来寻找一个更优的对抗样本。同时PGD限制了对抗样本和原始样本的差异，即 <img src="https://www.zhihu.com/equation?tex=%5CVert+%5CDelta+x+%5CVert+%5Cleq+%5Cepsilon" alt="[公式]"> ，让对抗样本落在以 <img src="https://www.zhihu.com/equation?tex=x" alt="[公式]"> 为球心， <img src="https://www.zhihu.com/equation?tex=%5Cepsilon" alt="[公式]"> 为半径的球内。如果落在了球外，则投影到球面上（即project操作)。 </p>
+</li>
+<li><p><strong>虚拟对抗（VAT)</strong></p>
+<p>​        对于无标签样本，当发生扰动时，可以约束 <img src="https://www.zhihu.com/equation?tex=f(x+%5CDelta+x),+f(x)" alt="[公式]"> 之间的差异尽量小，即：</p>
+<p><img src="https://www.zhihu.com/equation?tex=+%5Cmin_%7B%5Ctheta%7D+E_%7Bx+%5Csim+D%7D+%5B%5Cmax_%7B%5CDelta+x+%5Cin+%5COmega%7D+l(f(x+%5CDelta+x),+f(x))%5D+%5C%5C" alt="[公式]"><br>在 <img src="https://www.zhihu.com/equation?tex=x=c" alt="[公式]"> 处二阶展开 <img src="https://www.zhihu.com/equation?tex=l(f(x+%5CDelta+x),+f(c))" alt="[公式]"> 可得：</p>
+<p><img src="https://www.zhihu.com/equation?tex=++%5Cbegin%7Baligned%7D+l(f(x+%5CDelta+x),+f(c))+&+=+l(f(c),+f(c))+++%5CDelta+x%5ET+%C2%B7+%5Cnabla_x+l(f(x),f(c))%7C_%7Bx=c%7D++++%5CDelta+x%5ET++%5Cnabla_x%5E2++l(f(x),f(c))%7C_%7Bx=c%7D+++%5CDelta+x+%5C%5C+&=+%5CDelta+x%5ET++%5Cnabla_x%5E2++l(f(x),f(c))%7C_%7Bx=c%7D+++%5CDelta+x+%5Cend%7Baligned%7D+%5C%5C" alt="[公式]"></p>
+<p><img src="https://www.zhihu.com/equation?tex=H+=+%5Cnabla_x%5E2++l(f(x),f(c))%7C_%7Bx=c%7D+" alt="[公式]"> 是Hessian矩阵，使得上式最大的 <img src="https://www.zhihu.com/equation?tex=%5CDelta+x" alt="[公式]"> 是矩阵 <img src="https://www.zhihu.com/equation?tex=H" alt="[公式]"> 最大特征根对应的特征向量。</p>
+</li>
+</ul>
+<h3 id="Batch-Layer-Normalization"><a href="#Batch-Layer-Normalization" class="headerlink" title="Batch&#x2F;Layer Normalization"></a>Batch&#x2F;Layer Normalization</h3><p>Normalization将激活层的输入标准化，使得标准化后的输入能够落在激活函数的非饱和区。 </p>
+<img src="https://pic1.zhimg.com/v2-5c7d5254aab15c5f31a073921994fa54_720w.jpg?source=3af55fa1" alt="img" style="zoom:67%;" />
 
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220610221351234.png" alt="image-20220610221351234" style="zoom:67%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220610221415259.png" alt="image-20220610221415259" style="zoom:67%;" />
-
-
-
-
-
-<h5 id="根据攻击者所获得的攻击资料的不同，密码分析者对密码体制的常用的攻击手段？"><a href="#根据攻击者所获得的攻击资料的不同，密码分析者对密码体制的常用的攻击手段？" class="headerlink" title="根据攻击者所获得的攻击资料的不同，密码分析者对密码体制的常用的攻击手段？"></a>根据攻击者所获得的攻击资料的不同，密码分析者对密码体制的常用的攻击手段？</h5><p>&#x3D;&#x3D;书34&#x3D;&#x3D;</p>
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220611185739185.png" alt="image-20220611185739185" style="zoom:50%;" />
-
-<h5 id="什么是对称密码体制，公钥密码体制？"><a href="#什么是对称密码体制，公钥密码体制？" class="headerlink" title="什么是对称密码体制，公钥密码体制？"></a>什么是对称密码体制，公钥密码体制？</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220610221551400.png" alt="image-20220610221551400" style="zoom:50%;" />
-
-<p>&#x3D;&#x3D;书30-31&#x3D;&#x3D;</p>
-<h5 id="了解常见的古典密码体制"><a href="#了解常见的古典密码体制" class="headerlink" title="了解常见的古典密码体制"></a>了解常见的古典密码体制</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220610233203860.png" alt="image-20220610233203860" style="zoom:50%;" />
-
-<p>&#x3D;&#x3D;书37&#x3D;&#x3D;</p>
-<h5 id="仿射密码的加解密过程（移位）"><a href="#仿射密码的加解密过程（移位）" class="headerlink" title="仿射密码的加解密过程（移位）"></a>仿射密码的加解密过程（移位）</h5><p>&#x3D;&#x3D;ppt：1.24&#x3D;&#x3D;</p>
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220610221733327.png" alt="image-20220610221733327" style="zoom:50%;" />
-
-
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220610222032652.png" alt="image-20220610222032652" style="zoom:50%;" />
-
-
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220611160101701.png" alt="image-20220611160101701" style="zoom:50%;" />
-
-<p>&#x3D;&#x3D;例题：ppt1-36&#x3D;&#x3D;</p>
-<img src="C:\Users\86134\AppData\Roaming\Typora\typora-user-images\image-20220611184403470.png" alt="image-20220611184403470" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220611184535210.png" alt="image-20220611184535210" style="zoom:50%;" />
-
-<h5 id="Hill密码的加解密过程"><a href="#Hill密码的加解密过程" class="headerlink" title="Hill密码的加解密过程"></a>Hill密码的加解密过程</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220611172005492.png" alt="image-20220611172005492" style="zoom:50%;" />
-
-
-
-<h5 id="了解几种古典密码体制所采用的分析方法"><a href="#了解几种古典密码体制所采用的分析方法" class="headerlink" title="了解几种古典密码体制所采用的分析方法"></a>了解几种古典密码体制所采用的分析方法</h5><p>&#x3D;&#x3D;书49&#x3D;&#x3D;</p>
-<h4 id="ppt："><a href="#ppt：" class="headerlink" title="ppt："></a>ppt：</h4><h5 id="实用密码体制需要满足的基本条件"><a href="#实用密码体制需要满足的基本条件" class="headerlink" title="实用密码体制需要满足的基本条件"></a>实用密码体制需要满足的基本条件</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220610210908464.png" alt="image-20220610210908464" style="zoom:50%;" />
-
-
-
-
-
-<h2 id="Shannon理论"><a href="#Shannon理论" class="headerlink" title="Shannon理论"></a>Shannon理论</h2><p>&#x3D;&#x3D;书81&#x3D;&#x3D;</p>
-<h5 id="完善保密性的定义，并证明一些简单密码-体制具有完善保密性。"><a href="#完善保密性的定义，并证明一些简单密码-体制具有完善保密性。" class="headerlink" title="完善保密性的定义，并证明一些简单密码 体制具有完善保密性。"></a>完善保密性的定义，并证明一些简单密码 体制具有完善保密性。</h5><p>&#x3D;&#x3D;ppt 2.9-&#x3D;&#x3D;</p>
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220612004107231.png" alt="image-20220612004107231" style="zoom:50%;" />
-
-<p>&#x3D;&#x3D;书86&#x3D;&#x3D;</p>
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220612134453180.png" alt="image-20220612134453180" style="zoom:67%;" />
-
-
-
-<h2 id="分组密码"><a href="#分组密码" class="headerlink" title="分组密码"></a>分组密码</h2><h5 id="分组密码中的扩散和混淆（混乱）的含义"><a href="#分组密码中的扩散和混淆（混乱）的含义" class="headerlink" title="分组密码中的扩散和混淆（混乱）的含义"></a>分组密码中的扩散和混淆（混乱）的含义</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220612150749516.png" alt="image-20220612150749516" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220612151205915.png" alt="image-20220612151205915" style="zoom:67%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220612151223562.png" alt="image-20220612151223562" style="zoom:67%;" />
-
-<p>&#x3D;&#x3D;书101&#x3D;&#x3D;</p>
-<h5 id="数据加密标准DES：分组长度，密钥长度，-每一轮的轮函数，大体流程"><a href="#数据加密标准DES：分组长度，密钥长度，-每一轮的轮函数，大体流程" class="headerlink" title="数据加密标准DES：分组长度，密钥长度， 每一轮的轮函数，大体流程"></a>数据加密标准DES：分组长度，密钥长度， 每一轮的轮函数，大体流程</h5><p>&#x3D;&#x3D;ppt5-44&#x3D;&#x3D;</p>
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220612184103400.png" alt="image-20220612184103400" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220612184152136.png" alt="image-20220612184152136" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220612201043240.png" alt="image-20220612201043240" style="zoom:67%;" />
-
-
-
-<h5 id="高级加密标准AES：分组长度，密钥长度，-大体流程；会进行列混合中的代数运算"><a href="#高级加密标准AES：分组长度，密钥长度，-大体流程；会进行列混合中的代数运算" class="headerlink" title="高级加密标准AES：分组长度，密钥长度， 大体流程；会进行列混合中的代数运算"></a>高级加密标准AES：分组长度，密钥长度， 大体流程；会进行列混合中的代数运算</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613011604280.png" alt="image-20220613011604280" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613004022377.png" alt="image-20220613004022377" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220612222808702.png" alt="image-20220612222808702" style="zoom:50%;" />
-
-
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220612233958866.png" alt="image-20220612233958866" style="zoom:50%;" />
-
-
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613012104203.png" alt="image-20220613012104203" style="zoom:33%;" />
-
-
-
-<h5 id="知道分组密码的四种工作模式的加解密操作，了解它们的不同"><a href="#知道分组密码的四种工作模式的加解密操作，了解它们的不同" class="headerlink" title="知道分组密码的四种工作模式的加解密操作，了解它们的不同"></a>知道分组密码的四种工作模式的加解密操作，了解它们的不同</h5><p>&#x3D;&#x3D;ppt5-66&#x3D;&#x3D;</p>
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220612180304946.png" alt="image-20220612180304946" style="zoom:50%;" />
-
-<p>&#x3D;&#x3D;ppt 5-14&#x3D;&#x3D;</p>
-<h2 id="流密码"><a href="#流密码" class="headerlink" title="流密码"></a>流密码</h2><h5 id="掌握线性移位寄存器的特征多项式表示、-递推关系表示"><a href="#掌握线性移位寄存器的特征多项式表示、-递推关系表示" class="headerlink" title="掌握线性移位寄存器的特征多项式表示、 递推关系表示"></a>掌握线性移位寄存器的特征多项式表示、 递推关系表示</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613125608757.png" alt="image-20220613125608757" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220614014318806.png" alt="image-20220614014318806" style="zoom:80%;" />
-
-<p><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220614014436822.png" alt="image-20220614014436822"></p>
-<h5 id="会画线性移位寄存器的示意图"><a href="#会画线性移位寄存器的示意图" class="headerlink" title="会画线性移位寄存器的示意图"></a>会画线性移位寄存器的示意图</h5><h5 id="会求生成序列及周期，判断生成序列是否为m序列。"><a href="#会求生成序列及周期，判断生成序列是否为m序列。" class="headerlink" title="会求生成序列及周期，判断生成序列是否为m序列。"></a>会求生成序列及周期，判断生成序列是否为m序列。</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613125955688.png" alt="image-20220613125955688" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613135458274.png" alt="image-20220613135458274" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613140043001.png" alt="image-20220613140043001" style="zoom:50%;" />
-
-
-
-
-
-<h2 id="公钥密码"><a href="#公钥密码" class="headerlink" title="公钥密码"></a>公钥密码</h2><h5 id="了解什么是难解问题、（陷门）单向函数"><a href="#了解什么是难解问题、（陷门）单向函数" class="headerlink" title="了解什么是难解问题、（陷门）单向函数"></a>了解什么是难解问题、（陷门）单向函数</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613172653710.png" alt="image-20220613172653710" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613173510910.png" alt="image-20220613173510910" style="zoom:67%;" />
-
-<p>&#x3D;&#x3D;书233&#x3D;&#x3D;</p>
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613173021662.png" alt="image-20220613173021662" style="zoom:50%;" />
-
-
-
-<h5 id="欧拉函数的求值；欧拉定理"><a href="#欧拉函数的求值；欧拉定理" class="headerlink" title="欧拉函数的求值；欧拉定理"></a>欧拉函数的求值；欧拉定理</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613182227245.png" alt="image-20220613182227245" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613182241953.png" alt="image-20220613182241953" style="zoom:60%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613182302061.png" alt="image-20220613182302061" style="zoom:67%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613182747519.png" alt="image-20220613182747519" style="zoom:50%;" />
-
-
-
-
-
-<h5 id="雅可比记号的计算（注意各结论的应用条件，如-互反律；记基本结果）"><a href="#雅可比记号的计算（注意各结论的应用条件，如-互反律；记基本结果）" class="headerlink" title="雅可比记号的计算（注意各结论的应用条件，如 互反律；记基本结果）"></a>雅可比记号的计算（注意各结论的应用条件，如 互反律；记基本结果）</h5><p>&#x3D;&#x3D;ppt 8-66&#x3D;&#x3D;</p>
-<h5 id="计算模n下的逆元"><a href="#计算模n下的逆元" class="headerlink" title="计算模n下的逆元"></a>计算模n下的逆元</h5><p>浏览器收藏夹</p>
-<h5 id="掌握RSA密码体制：密钥的产生和加解密算法"><a href="#掌握RSA密码体制：密钥的产生和加解密算法" class="headerlink" title="掌握RSA密码体制：密钥的产生和加解密算法"></a>掌握RSA密码体制：密钥的产生和加解密算法</h5><h5 id="了解背包密码体制加解密算法"><a href="#了解背包密码体制加解密算法" class="headerlink" title="了解背包密码体制加解密算法"></a>了解背包密码体制加解密算法</h5><h5 id="掌握椭圆曲线上点的基本计算：加法、数乘"><a href="#掌握椭圆曲线上点的基本计算：加法、数乘" class="headerlink" title="掌握椭圆曲线上点的基本计算：加法、数乘"></a>掌握椭圆曲线上点的基本计算：加法、数乘</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613231937566.png" alt="image-20220613231937566" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613231955963.png" alt="image-20220613231955963" style="zoom:50%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613232821541.png" alt="image-20220613232821541" style="zoom:50%;" />
-
-<p>&#x3D;&#x3D;例题：9-39&#x3D;&#x3D;</p>
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220614150554546.png" alt="image-20220614150554546" style="zoom:67%;" />
-
-
-
-<h2 id="Hash函数"><a href="#Hash函数" class="headerlink" title="Hash函数"></a>Hash函数</h2><h5 id="弱无碰撞和强无碰撞的定义及相关证明"><a href="#弱无碰撞和强无碰撞的定义及相关证明" class="headerlink" title="弱无碰撞和强无碰撞的定义及相关证明"></a>弱无碰撞和强无碰撞的定义及相关证明</h5><p>&#x3D;&#x3D;书197&#x3D;&#x3D;</p>
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613233126662.png" alt="image-20220613233126662" style="zoom:60%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220613233253620.png" alt="image-20220613233253620" style="zoom:50%;" />
-
-
-
-<h2 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h2><h5 id="了解数字签名的特点，与传统物理签名的区别"><a href="#了解数字签名的特点，与传统物理签名的区别" class="headerlink" title="了解数字签名的特点，与传统物理签名的区别"></a>了解数字签名的特点，与传统物理签名的区别</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220614004131625.png" alt="image-20220614004131625" style="zoom:60%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220614004229668.png" alt="image-20220614004229668" style="zoom:50%;" />
-
-<p>&#x3D;&#x3D;书265&#x3D;&#x3D;</p>
-<h5 id="群签名、盲签名-记"><a href="#群签名、盲签名-记" class="headerlink" title="群签名、盲签名(记)"></a>群签名、盲签名(记)</h5><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220614010556389.png" alt="image-20220614010556389" style="zoom:50%;" />
-
-
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220614010610956.png" alt="image-20220614010610956" style="zoom:50%;" />
-
-
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220614010538376.png" alt="image-20220614010538376" style="zoom:50%;" />
-
-
-
-
-
-<h2 id="密码协议和应用"><a href="#密码协议和应用" class="headerlink" title="密码协议和应用"></a>密码协议和应用</h2><h5 id="密钥分配，秘密共享，身份识别，零知识证明协议，安全多方计算，PDP-POR，可搜索加密"><a href="#密钥分配，秘密共享，身份识别，零知识证明协议，安全多方计算，PDP-POR，可搜索加密" class="headerlink" title="密钥分配，秘密共享，身份识别，零知识证明协议，安全多方计算，PDP&#x2F;POR，可搜索加密"></a>密钥分配，秘密共享，身份识别，零知识证明协议，安全多方计算，PDP&#x2F;POR，可搜索加密</h5><h5 id="本身的含义以及所解决的问题是什么"><a href="#本身的含义以及所解决的问题是什么" class="headerlink" title="本身的含义以及所解决的问题是什么"></a>本身的含义以及所解决的问题是什么</h5><p>&#x3D;&#x3D;书299&#x3D;&#x3D;</p>
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220614011740746.png" alt="image-20220614011740746" style="zoom:67%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220614011820122.png" alt="image-20220614011820122" style="zoom:67%;" />
-
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20220614011847088.png" alt="image-20220614011847088" style="zoom:50%;" />
 
                 
             </div>
@@ -662,7 +527,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jarily134.github.io/2022/06/10/%E5%AF%86%E7%A0%81%E5%AD%A6/">https://jarily134.github.io/2022/06/10/%E5%AF%86%E7%A0%81%E5%AD%A6/</a>
+                    <a href="https://jarily134.github.io/2022/01/18/%E6%AD%A3%E5%88%99%E5%8C%96%EF%BC%88regularization%EF%BC%89/">https://jarily134.github.io/2022/01/18/%E6%AD%A3%E5%88%99%E5%8C%96%EF%BC%88regularization%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -745,13 +610,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/09/22/hello-world/">
+                <a href="/2022/06/10/%E5%AF%86%E7%A0%81%E5%AD%A6/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="密码学">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">密码学</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -762,7 +627,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-09-22
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-10
                         </span>
                         <span class="publish-author">
                             
@@ -782,7 +647,7 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/18/%E6%AD%A3%E5%88%99%E5%8C%96%EF%BC%88regularization%EF%BC%89/">
+                <a href="/2021/12/05/%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-1/">
                     <div class="card-image">
                         
                         
@@ -799,7 +664,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-05
                             </span>
                         <span class="publish-author">
                             
