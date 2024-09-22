@@ -483,19 +483,13 @@
 <p>“<strong>对抗训练</strong>” 则是属于“对抗防御”的一种，它通过构造对抗样本并加入到训练集中，增强模型对对抗样本的鲁棒性，进而提高模型的泛化能力</p>
 <ul>
 <li><p><strong>Fast Gradient Method（FGM）</strong></p>
-<p>​        对抗噪声 <img src="https://www.zhihu.com/equation?tex=%CE%94x" alt="[公式]"> 的目标是增加损失 <img src="https://www.zhihu.com/equation?tex=l(f(x+%CE%94x),y)" alt="[公式]"> ，尽量让模型在样本 <img src="https://www.zhihu.com/equation?tex=x+%5CDelta+x" alt="[公式]"> 上出错。因此一个自然的想法是沿着梯度增加的方向扰动 <img src="https://www.zhihu.com/equation?tex=x" alt="[公式]"> ，扰动量为： </p>
-<p><img src="https://www.zhihu.com/equation?tex=+%5CDelta+x+=+%5Cepsilon+%C2%B7+%5Cnabla_x%7Bl(f(x),y)%7D+%5C%5C" alt="[公式]"><br>为了限制 <img src="https://www.zhihu.com/equation?tex=%5CDelta+x" alt="[公式]"> ，可以将梯度归一化: </p>
-<p><img src="https://www.zhihu.com/equation?tex=%5CDelta+x+=+%5Cepsilon+%C2%B7+%5Cfrac%7B%5Cnabla_x%7Bl(f(x),y)%7D%7D%7B%5CVert+%5Cnabla_x%7Bl(f(x),y)%7D+%5CVert%7D+%5C%5C" alt="[公式]"><br>    然后，再最小化 <img src="https://www.zhihu.com/equation?tex=l(f_%7B%5Ctheta%7D(x+%CE%94x),y)" alt="[公式]"> 来更新参数模型参数 <img src="https://www.zhihu.com/equation?tex=%5Ctheta" alt="[公式]"> 。 将 <img src="https://www.zhihu.com/equation?tex=l(f(x+%CE%94x),y)" alt="[公式]"> 在 <img src="https://www.zhihu.com/equation?tex=x" alt="[公式]"> 处进行一阶泰勒展开，并代入 <img src="https://www.zhihu.com/equation?tex=%5CDelta+x+=+%5Cepsilon+%C2%B7+%5Cnabla_x%7Bl(f(x),y)%7D" alt="[公式]"> 得:<br><img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Baligned%7D+l(f(x+%5CDelta+x),y)+&+%5Capprox+l(f(x),y)+%5Cnabla_x%7Bl(f(x),y)%7D%C2%B7%5CDelta+x+%5C%5C+&=+l(f(x),y)+%5Cepsilon+%5CVert+%5Cnabla_x%7Bl(f(x),y)%7D+%5CVert%5E2+%5Cend%7Baligned%7D+%5C%5C" alt="[公式]"> </p>
-<p>不难看出，FGM和梯度惩罚是等价的， <img src="https://www.zhihu.com/equation?tex=%5Cepsilon+%5CVert+%5Cnabla_x%7BL(x,y;%5Ctheta)%7D+%5CVert%5E2" alt="[公式]"> 就是梯度惩罚的正则项。</p>
+<p><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20240923062107237.png" alt="image-20240923062107237"></p>
 </li>
 <li><p><strong>Projected Gradient Descent（PGD）</strong></p>
-<p>​        PGD和FGM的思路一致的，FGM通过一次梯度上升来构造对抗样本，而PGD通过多次梯度上升来寻找一个更优的对抗样本。同时PGD限制了对抗样本和原始样本的差异，即 <img src="https://www.zhihu.com/equation?tex=%5CVert+%5CDelta+x+%5CVert+%5Cleq+%5Cepsilon" alt="[公式]"> ，让对抗样本落在以 <img src="https://www.zhihu.com/equation?tex=x" alt="[公式]"> 为球心， <img src="https://www.zhihu.com/equation?tex=%5Cepsilon" alt="[公式]"> 为半径的球内。如果落在了球外，则投影到球面上（即project操作)。 </p>
+<p><img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20240923062133995.png" alt="image-20240923062133995"></p>
 </li>
 <li><p><strong>虚拟对抗（VAT)</strong></p>
-<p>​        对于无标签样本，当发生扰动时，可以约束 <img src="https://www.zhihu.com/equation?tex=f(x+%5CDelta+x),+f(x)" alt="[公式]"> 之间的差异尽量小，即：</p>
-<p><img src="https://www.zhihu.com/equation?tex=+%5Cmin_%7B%5Ctheta%7D+E_%7Bx+%5Csim+D%7D+%5B%5Cmax_%7B%5CDelta+x+%5Cin+%5COmega%7D+l(f(x+%5CDelta+x),+f(x))%5D+%5C%5C" alt="[公式]"><br>在 <img src="https://www.zhihu.com/equation?tex=x=c" alt="[公式]"> 处二阶展开 <img src="https://www.zhihu.com/equation?tex=l(f(x+%5CDelta+x),+f(c))" alt="[公式]"> 可得：</p>
-<p><img src="https://www.zhihu.com/equation?tex=++%5Cbegin%7Baligned%7D+l(f(x+%5CDelta+x),+f(c))+&+=+l(f(c),+f(c))+++%5CDelta+x%5ET+%C2%B7+%5Cnabla_x+l(f(x),f(c))%7C_%7Bx=c%7D++++%5CDelta+x%5ET++%5Cnabla_x%5E2++l(f(x),f(c))%7C_%7Bx=c%7D+++%5CDelta+x+%5C%5C+&=+%5CDelta+x%5ET++%5Cnabla_x%5E2++l(f(x),f(c))%7C_%7Bx=c%7D+++%5CDelta+x+%5Cend%7Baligned%7D+%5C%5C" alt="[公式]"></p>
-<p><img src="https://www.zhihu.com/equation?tex=H+=+%5Cnabla_x%5E2++l(f(x),f(c))%7C_%7Bx=c%7D+" alt="[公式]"> 是Hessian矩阵，使得上式最大的 <img src="https://www.zhihu.com/equation?tex=%5CDelta+x" alt="[公式]"> 是矩阵 <img src="https://www.zhihu.com/equation?tex=H" alt="[公式]"> 最大特征根对应的特征向量。</p>
+<p> <img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20240923062147633.png" alt="image-20240923062147633"></p>
 </li>
 </ul>
 <h3 id="Batch-Layer-Normalization"><a href="#Batch-Layer-Normalization" class="headerlink" title="Batch&#x2F;Layer Normalization"></a>Batch&#x2F;Layer Normalization</h3><p>Normalization将激活层的输入标准化，使得标准化后的输入能够落在激活函数的非饱和区。 </p>
