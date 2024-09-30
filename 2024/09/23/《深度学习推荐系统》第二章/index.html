@@ -480,7 +480,7 @@
 <h3 id="2-2-协同过滤"><a href="#2-2-协同过滤" class="headerlink" title="2.2 协同过滤"></a>2.2 协同过滤</h3><p><em><strong>协同过滤：</strong></em>协同大家的<strong>反馈、评价</strong>和<strong>意见</strong>对海的信息进行过滤，从中筛选出目标用户可能感兴趣的信息的推荐过程。</p>
 <img src="C:\Users\86134\AppData\Roaming\Typora\typora-user-images\image-20241001002251399.png" alt="image-20241001002251399" style="zoom:50%;" />
 
-<p>&#x3D;&#x3D;<strong>UserCF：</strong>历史评价数据 → 共现矩阵 → <strong>用户相似度计算</strong> → 找到最相似的Top n用户→ 是否推荐&#x3D;&#x3D;</p>
+<h4 id="UserCF"><a href="#UserCF" class="headerlink" title="UserCF"></a>UserCF</h4><p>&#x3D;&#x3D;<strong>UserCF：</strong>历史评价数据 → 共现矩阵 → <strong>用户相似度计算</strong> → 找到最相似的Top n用户→ 是否推荐&#x3D;&#x3D;</p>
 <p><strong>用户相似度计算：</strong>（最关键的一步）</p>
 <ul>
 <li>余炫相似度<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20240908150556082.png" alt="image-20240908150556082" style="zoom:50%;" /></li>
@@ -492,7 +492,15 @@
 
 <p>$w_{\mathrm{u}, \mathrm{s}}$：是用户u和用户s的相似度；$R_{\mathrm{u}, \mathrm{s}}$：是用户s对物品p的评分</p>
 <p>问题：在互联网应用的场景下，用户数远大于物品数，用户数的增长导致用户相似度矩阵的空间复杂度以 $n^2$ 的速度快速增长，在线存储系统难以承受；用户的历史数据向量往往非常稀疏，找到相似用户的准确度非常低，UserCF 不适用于那些正反馈获取较困难的应用场景(如酒店预定大件商品购买等低频应用)。</p>
-<p>&#x3D;&#x3D;<strong>ltemCF</strong>：（基于物品相似度）：历史数据→共现矩阵→物品相似度→找到最相似的Top k物品→ 是否推荐&#x3D;&#x3D;</p>
+<h4 id="ItemCF"><a href="#ItemCF" class="headerlink" title="ItemCF"></a>ItemCF</h4><p>&#x3D;&#x3D;<strong>ltemCF</strong>：（基于物品相似度）：历史数据→共现矩阵→物品相似度→获得用户历史行为数据中的正反馈物品列表→找到最相似的Top k物品，组成相似物品集合→ 是否推荐&#x3D;&#x3D;</p>
+<p>最终相似度是多个相似度的累加：</p>
+<img src="C:\Users\86134\AppData\Roaming\Typora\typora-user-images\image-20241001004030929.png" alt="image-20241001004030929" style="zoom:50%;" />
+
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>UserCF：快速得知与自己兴趣相似的人最近喜欢的是什么</p>
+<p>ItemCF：用户在一个实践段内更倾向于寻找一类商品</p>
+<h4 id="发展"><a href="#发展" class="headerlink" title="发展"></a>发展</h4><p>协调过滤缺点：推荐结果的头部效应明显，处理稀疏向量的能力弱</p>
+<p><strong>矩阵分解技术</strong>：解决以上问题，增加模型的泛化能力。在协同过滤共现矩阵的基础上，使用更稠密的<strong>隐向量</strong>表示用户和物品，挖掘用户和物品的隐含兴趣和隐含特征</p>
+<h3 id="2-3-矩阵分解算法"><a href="#2-3-矩阵分解算法" class="headerlink" title="2.3 矩阵分解算法"></a>2.3 矩阵分解算法</h3><img src="C:\Users\86134\AppData\Roaming\Typora\typora-user-images\image-20241001005414687.png" alt="image-20241001005414687" style="zoom:67%;" />
 
                 
             </div>
