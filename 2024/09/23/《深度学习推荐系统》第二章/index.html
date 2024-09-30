@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="深度学习推荐系统《第一章》, 静静子的小屋">
+    <meta name="keywords" content="《深度学习推荐系统》第二章, 静静子的小屋">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>深度学习推荐系统《第一章》 | 静静子的小屋</title>
+    <title>《深度学习推荐系统》第二章 | 静静子的小屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">深度学习推荐系统《第一章》</h1>
+                    <h1 class="description center-align post-title">《深度学习推荐系统》第二章</h1>
                 </div>
             </div>
         </div>
@@ -464,31 +464,35 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>“如果我们能为搜狗的用户推荐 更合适的广告，让广告的点击率增长 1% ，就能为公司增加上千万的利润”</p>
-<ul>
-<li>用户角度: 推荐系统解决在”信息过载”的情况下，用户如何高效获得感兴 趣信息的问题。</li>
-<li>公司角度:推荐系统解决产品能够最大限度地吸引用户、留存用户、增加用 户黠性、提高用户转化率的问题，从而达到公司商业目标连续增长的目的。</li>
-</ul>
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20240904150319079.png" alt="image-20240904150319079" style="zoom:50%;" />
+                <p>难题： 数据的实时处理、特征的实时提取，线上模型服务过程的数据实时获取</p>
+<blockquote>
+<p>协同过虑、逻辑回归、因子分解机→传统推荐模型</p>
+</blockquote>
+<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20240904152116520.png" alt="image-20240904152116520" style="zoom:50%;" />
 
 <ul>
-<li>数据和信息相关的问题，即”用户信息” “物品信息” “场景信息 “分别什么 如何存储 、更新和处理</li>
-<li>推荐系统算法和模型相关的问题，即推荐模型如何训练、如何预测、如 何达成更好的推荐效果</li>
+<li>协同过滤算法族</li>
+<li>逻辑回归算法族</li>
+<li>因子分解算法族</li>
+<li>组合模型</li>
 </ul>
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20240904150510626.png" alt="image-20240904150510626" style="zoom:50%;" />
+<p>（P13）</p>
+<h3 id="2-2-协同过滤"><a href="#2-2-协同过滤" class="headerlink" title="2.2 协同过滤"></a>2.2 协同过滤</h3><p><em><strong>协同过滤：</strong></em>协同大家的<strong>反馈、评价</strong>和<strong>意见</strong>对海的信息进行过滤，从中筛选出目标用户可能感兴趣的信息的推荐过程。</p>
+<img src="C:\Users\86134\AppData\Roaming\Typora\typora-user-images\image-20241001002251399.png" alt="image-20241001002251399" style="zoom:50%;" />
 
-<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20240904150527831.png" alt="image-20240904150527831" style="zoom:50%;" />
+<p>&#x3D;&#x3D;<strong>UserCF：</strong>历史评价数据 → 共现矩阵 → <strong>用户相似度计算</strong> → 找到最相似的Top n用户→ 是否推荐&#x3D;&#x3D;</p>
+<p><strong>用户相似度计算：</strong>（最关键的一步）</p>
+<ul>
+<li>余炫相似度<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20240908150556082.png" alt="image-20240908150556082" style="zoom:50%;" /></li>
+<li>皮尔逊相关系数<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20240908150616736.png" alt="image-20240908150616736" style="zoom:50%;" /></li>
+<li>基于皮尔逊系数，引入物品平均分，减少评分偏置的影响<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20240908150631094.png" alt="image-20240908150631094" style="zoom:50%;" /></li>
+</ul>
+<p>最终结果的排序：最常用的方式是利用 <em>用户相似度</em> 和 <em>相似用户的评价的加权平均</em> 获得目标用户的评价预测：</p>
+<img src="https://kklaary.oss-cn-beijing.aliyuncs.com/img/image-20240908150806718.png" alt="image-20240908150806718" style="zoom:50%;" />
 
-<p>“客户端及服务器端时数据处理” “流处理平台准时数据处理””大数据台离线数据处理”</p>
-<p>实时性：强→弱；处理能力：弱→强。</p>
-<p><strong>出口数据：</strong></p>
-<p>( 1 )生成推荐模型所需的样本数据，用于算法模型的训练和评估 </p>
-<p>( 2 )生成推荐模型服务( model serving )所需的”特征”，用于推荐系统的线上推断 </p>
-<p>( 3 )生成系统监控、商业智能( Business Intelligence , BI 系统所需的统计型数据</p>
-<p><strong>模型结构：</strong></p>
-<p>召回层：利用高效的召回规则、 算法或简单的模型，快速从海量的候 选集中召回用户可能感兴趣的物品</p>
-<p>排序层：利用排序模型对初筛的候选集进行精排序</p>
-<p>补充策略与算法层：结合一些补充的策 、略和算法对推荐列表进行一定的调整，最终形成用户可见的推荐列表</p>
+<p>$w_{\mathrm{u}, \mathrm{s}}$：是用户u和用户s的相似度；$R_{\mathrm{u}, \mathrm{s}}$：是用户s对物品p的评分</p>
+<p>问题：在互联网应用的场景下，用户数远大于物品数，用户数的增长导致用户相似度矩阵的空间复杂度以 $n^2$ 的速度快速增长，在线存储系统难以承受；用户的历史数据向量往往非常稀疏，找到相似用户的准确度非常低，UserCF 不适用于那些正反馈获取较困难的应用场景(如酒店预定大件商品购买等低频应用)。</p>
+<p>&#x3D;&#x3D;<strong>ltemCF</strong>：（基于物品相似度）：历史数据→共现矩阵→物品相似度→找到最相似的Top k物品→ 是否推荐&#x3D;&#x3D;</p>
 
                 
             </div>
@@ -515,7 +519,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jarily134.github.io/2024/09/23/1/">https://jarily134.github.io/2024/09/23/1/</a>
+                    <a href="https://jarily134.github.io/2024/09/23/%E3%80%8A%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0/">https://jarily134.github.io/2024/09/23/%E3%80%8A%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -599,13 +603,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/2024/09/23/1/">
+                <a href="/2024/09/23/%E3%80%8A%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="深度学习推荐系统《第一章》">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="《深度学习推荐系统》第二章">
                         
-                        <span class="card-title">深度学习推荐系统《第一章》</span>
+                        <span class="card-title">《深度学习推荐系统》第二章</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -637,13 +641,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/09/22/hello-world/">
+                <a href="/2024/09/23/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E3%80%8A%E7%AC%AC%E4%B8%80%E7%AB%A0%E3%80%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="深度学习推荐系统《第一章》">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">深度学习推荐系统《第一章》</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -654,7 +658,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-09-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-09-23
                             </span>
                         <span class="publish-author">
                             
