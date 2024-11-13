@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="深度, 静静子的小屋">
+    <meta name="keywords" content="fun-rec, 静静子的小屋">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>深度 | 静静子的小屋</title>
+    <title>fun-rec | 静静子的小屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">深度</h1>
+                    <h1 class="description center-align post-title">fun-rec</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2024-10-01
+                    2024-10-23
                 </div>
                 
 
@@ -464,7 +464,32 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>1111111</p>
+                <p>下</p>
+<ol>
+<li>离线层：不用实时数据，不提供实时响应；</li>
+<li>近线层：使用实时数据，不保证实时响应；</li>
+<li>在线层：使用实时数据，保证实时在线服务；</li>
+</ol>
+<p><strong>召回、粗排、排序、重排</strong></p>
+<p><strong>离线任务</strong>一般会按照天或者更久运行，比如每天晚上定期更新这一天的数据，然后重新训练模型，第二天上线新模型。</p>
+<p>目前主流的做法是HDFS，收集到我们所有的业务数据，通过HIVE等工具，从全量数据中抽取出我们需要的数据，进行相应的加工，离线阶段主流使用的分布式框架一般是Spark。</p>
+<p><strong>近线层</strong>的产生是同时想要弥补离线层和在线层的不足，折中的产物。</p>
+<img src="https://cdn.jsdelivr.net/gh/momo123qaz/picture@main/PicGo/687474703a2f2f72796c756f2e6f73732d636e2d6368656e6764752e616c6979756e63732e636f6d2fe59bbee78987696d6167652d32303232303430393230353833303032372e706e67" alt="在这里插入图片描述" style="zoom:50%;" />
+
+
+
+<p><strong>在线层</strong></p>
+<ol>
+<li>模型在线服务；包括了快速召回和排序；</li>
+<li>在线特征快速处理拼接：：根据传入的用户ID和场景，快速读取特征和处理；</li>
+<li>AB实验或者分流：根据不同用户采用不一样的模型，比如冷启动用户和正常服务模型；</li>
+<li>运筹优化和业务干预：比如要对特殊商家流量扶持、对某些内容限流；</li>
+</ol>
+<p>典型的在线服务是用过RESTful&#x2F;RPC等提供服务，一般是公司后台服务部门调用我们的这个服务，返回给前端。具体部署应用比较多的方式就是使用Docker在K8S部署。</p>
+<p>召回阶段我们现在主要是在保证Item质量的基础上注重覆盖率<strong>多样性</strong>，粗排阶段主要用简单的模型来解决不同路的召回和当前用户的<strong>相关性</strong>问题，最后截断到1k个以内的候选集，这个候选集符合一定的个性化<strong>相关性</strong>、视频<strong>质量</strong>和<strong>多样性</strong>的保证，然后做ranking去做复杂模型的predict。</p>
+<p>选取曝光点击为正样本，曝光未点击为负样本</p>
+<p>一般在精排层我们使用AUC作为指标，但是在重排序更多关注NDCG等指标</p>
+<p>Swing算法：对于共同点击商品i，j的用户，如果用户之间共同点击的商品越少则商品i，j就越相似。</p>
 
                 
             </div>
@@ -491,7 +516,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://momo123qaz.github.io/2024/10/01/%E6%B7%B1%E5%BA%A6/">https://momo123qaz.github.io/2024/10/01/%E6%B7%B1%E5%BA%A6/</a>
+                    <a href="https://momo123qaz.github.io/2024/10/23/fun-rec/">https://momo123qaz.github.io/2024/10/23/fun-rec/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -570,9 +595,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2024/10/23/fun-rec/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="fun-rec">
+                        
+                        <span class="card-title">fun-rec</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Jarily
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2024/10/16/%E7%8E%8B%E6%A0%91%E6%A3%AE%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
                     <div class="card-image">
@@ -590,45 +654,8 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-10-16
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Jarily
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/09/23/%E3%80%8A%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="《深度学习推荐系统》第二章">
-                        
-                        <span class="card-title">《深度学习推荐系统》第二章</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-09-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-16
                             </span>
                         <span class="publish-author">
                             
